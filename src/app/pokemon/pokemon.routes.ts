@@ -10,6 +10,10 @@ export const pokemonRoutes: Routes = [
             {
                 path: 'home',
                 component: HomePageComponent
+            },
+            {
+                path: '**',
+                redirectTo: 'home'
             }
         ]
     }
