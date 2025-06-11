@@ -1,0 +1,28 @@
+<div class="card card-side bg-base-300 shadow-sm">
+  <figure>
+    <img
+        class="scale-x-[-1] w-60 bg-amber-50"
+      [src]="pokemon()?.sprite?.front"
+      [alt]="pokemon()?.name" />     
+  </figure>
+  <div class="card-body w-[400px]">
+    <div class="flex justify-between">
+        <h2 class="card-title font-bold">{{pokemon()!.name}}</h2>
+        <div class="flex gap-2">
+        @for (type of pokemon()?.types; track type) {
+                <img class="w-12 h-6" src="assets/types/{{type}}.webp" alt="type"/>
+            }
+        </div>
+    </div>
+    <p class="text-center text-xl mt-2">Stats</p>
+    <hr>
+    <div class="flex flex-wrap">
+        @for (stat of pokemon()?.stats; track stat.name) {
+            <p class="w-1/2"><span class="font-bold">{{stat.name}}:</span> {{stat.value}}</p>
+        }
+    </div>
+        <div class="card-actions justify-end">
+      <button class="btn btn-primary">Watch</button>
+    </div>
+  </div>
+</div>

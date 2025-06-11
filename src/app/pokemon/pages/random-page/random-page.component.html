@@ -1,1 +1,6 @@
-<p>random-page works!</p>
+@if(pokemonResource.hasValue()){
+    <div class="flex justify-center">
+        <pokemon-card [pokemon]="pokemonResource.value()"/>
+    </div>
+}
+
