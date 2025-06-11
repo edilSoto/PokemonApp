@@ -1,28 +1,49 @@
 <div class="card card-side bg-base-300 shadow-sm">
-  <figure>
-    <img
-        class="scale-x-[-1] w-60 bg-amber-50"
-      [src]="pokemon()?.sprite?.front"
-      [alt]="pokemon()?.name" />     
+  <figure class="mt-6">
+  <pokemon-image
+    [shiny]="shiny()"
+    [sprite]="pokemon()?.sprite!"/>
   </figure>
   <div class="card-body w-[400px]">
-    <div class="flex justify-between">
-        <h2 class="card-title font-bold">{{pokemon()!.name}}</h2>
-        <div class="flex gap-2">
-        @for (type of pokemon()?.types; track type) {
-                <img class="w-12 h-6" src="assets/types/{{type}}.webp" alt="type"/>
-            }
-        </div>
-    </div>
-    <p class="text-center text-xl mt-2">Stats</p>
-    <hr>
-    <div class="flex flex-wrap">
-        @for (stat of pokemon()?.stats; track stat.name) {
-            <p class="w-1/2"><span class="font-bold">{{stat.name}}:</span> {{stat.value}}</p>
+    <div class="flex justify-between mb-4">
+      <div class="flex">
+        <h2 class="card-title font-bold text-2xl">{{pokemon()!.name | capitalizeFirstLetter}}</h2>
+        @if (shiny()) {
+          <svg 
+          class="cursor-pointer select-none"
+          (click)="setShinyStatus(false)"
+          xmlns="http://www.w3.org/2000/svg" 
+          width="35" 
+          height="35" 
+          viewBox="0 0 512 512"><defs><linearGradient id="meteoconsStarFill0" x1="187.9" x2="324.1" y1="138.1" y2="373.9" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fcd966"/><stop offset=".5" stop-color="#fcd966"/><stop offset="1" stop-color="#fccd34"/></linearGradient></defs><path fill="url(#meteoconsStarFill0)" stroke="#fcd34d" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="m105.7 263.5l107.5 29.9a7.9 7.9 0 0 1 5.4 5.4l29.9 107.5a7.8 7.8 0 0 0 15 0l29.9-107.5a7.9 7.9 0 0 1 5.4-5.4l107.5-29.9a7.8 7.8 0 0 0 0-15l-107.5-29.9a7.9 7.9 0 0 1-5.4-5.4l-29.9-107.5a7.8 7.8 0 0 0-15 0l-29.9 107.5a7.9 7.9 0 0 1-5.4 5.4l-107.5 29.9a7.8 7.8 0 0 0 0 15Z"><animateTransform additive="sum" attributeName="transform" calcMode="spline" dur="6s" keySplines=".42, 0, .58, 1; .42, 0, .58, 1" repeatCount="indefinite" type="rotate" values="-15 256 256; 15 256 256; -15 256 256"/><animate attributeName="opacity" dur="6s" values="1; .75; 1; .75; 1; .75; 1"/></path></svg>
+        }@else {
+          <svg 
+          class="cursor-pointer select-none"
+          (click)="setShinyStatus(true)"
+          xmlns="http://www.w3.org/2000/svg" 
+          width="35" 
+          height="35" 
+          viewBox="0 0 512 512"><path fill="none" stroke="#fcd34d" stroke-linecap="round" stroke-linejoin="round" stroke-width="15" d="m105.7 263.5l107.5 29.9a7.9 7.9 0 0 1 5.4 5.4l29.9 107.5a7.8 7.8 0 0 0 15 0l29.9-107.5a7.9 7.9 0 0 1 5.4-5.4l107.5-29.9a7.8 7.8 0 0 0 0-15l-107.5-29.9a7.9 7.9 0 0 1-5.4-5.4l-29.9-107.5a7.8 7.8 0 0 0-15 0l-29.9 107.5a7.9 7.9 0 0 1-5.4 5.4l-107.5 29.9a7.8 7.8 0 0 0 0 15Z"><animateTransform additive="sum" attributeName="transform" calcMode="spline" dur="6s" keySplines=".42, 0, .58, 1; .42, 0, .58, 1" repeatCount="indefinite" type="rotate" values="-15 256 256; 15 256 256; -15 256 256"/><animate attributeName="opacity" dur="6s" values="1; .75; 1; .75; 1; .75; 1"/></path></svg>
         }
+        </div>
+  
+      <div class="flex gap-2">
+        @for (type of pokemon()?.types; track type) {
+        <img class="w-12 h-6" src="assets/types/{{type}}.webp" alt="type" />
+        }
+      </div>
     </div>
-        <div class="card-actions justify-end">
-      <button class="btn btn-primary">Watch</button>
+    <p><span class="font-bold">Height:</span> {{pokemon()?.height! | convertDmtoM}} M</p>
+    <p><span class="font-bold">Weight:</span> {{pokemon()?.weight! | convertHgtoKg}} Kg</p>
+    <p class="text-center text-xl mt-2 font-semibold">Combat stats</p>
+    <hr>
+    <div class="flex flex-wrap gap-y-3">
+      @for (stat of pokemon()?.stats; track stat.name) {
+      <p class="w-1/2"><span class="font-bold">{{stat.name}}:</span> {{stat.value}}</p>
+      }
+    </div>
+    <div class="card-actions justify-end">
+
     </div>
   </div>
 </div>

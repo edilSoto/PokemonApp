@@ -8,7 +8,7 @@ export interface Pokemon {
 
 }
 
-interface Sprite {
+export interface Sprite {
     front: string;
     back: string;
     shinyFront: string;
