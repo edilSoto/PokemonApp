@@ -8,9 +8,9 @@
             <p>Pokemon App</p>
         </div>
     </div>
-    <div class="navbar-center">
-        <a class="btn btn-ghost text-xl">Random</a>
-        <a class="btn btn-ghost text-xl">Types</a>
+    <div class="navbar-center flex gap-4">
+        <a class="btn text-xl" [routerLink]="['random']" routerLinkActive="btn-primary" >Random</a>
+        <a class="btn text-xl" [routerLink]="['types']" routerLinkActive="btn-primary">Types</a>
         <a class="btn btn-ghost text-xl">Search</a>
 
     </div>

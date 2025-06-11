@@ -1,4 +1,4 @@
-export interface PokemonRequest {
+export interface PokemonApiResponse {
     abilities:                Ability[];
     base_experience:          number;
     cries:                    Cries;
