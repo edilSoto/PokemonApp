@@ -1,1 +1,5 @@
-<p>types-page works!</p>
+<div>
+    @for (type of pokemonResource.value(); track type) {
+        <pokemon-type-card [type]="type"/>
+    }
+</div>

@@ -15,7 +15,7 @@ export class RandomPageComponent implements OnInit{
   pokemonId = signal<number | null>(null)
   
   ngOnInit(): void {
-    this.pokemonId.set(Math.floor(Math.random() * 151) + 1); 
+    this.pokemonId.set(this.generateRandomNumber()); 
   }
 
     pokemonResource = rxResource({
@@ -26,4 +26,12 @@ export class RandomPageComponent implements OnInit{
       return this.pokemonService.getPokemon(request.query) 
     }
   })
+
+  generateRandomNumber(): number{
+    return Math.floor(Math.random() * 151) + 1
+  }
+
+  getNewPokemon(){
+    this.pokemonId.set(this.generateRandomNumber()); 
+  }
 }

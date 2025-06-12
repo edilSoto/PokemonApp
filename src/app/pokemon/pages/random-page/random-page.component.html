@@ -1,6 +1,7 @@
 @if(pokemonResource.hasValue()){
-    <div class="flex justify-center">
-        <pokemon-card [pokemon]="pokemonResource.value()"/>
+    <div class="flex flex-col items-center mt-30">
+        <pokemon-card class="max-w-[640px]" [pokemon]="pokemonResource.value()"/>
+        <button class="btn btn-primary mt-10" (click)="getNewPokemon()">Next!</button>
     </div>
 }
 

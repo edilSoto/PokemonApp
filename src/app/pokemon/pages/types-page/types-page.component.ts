@@ -1,10 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { TypeCardComponent } from "../../components/type-card/type-card.component";
+import { PokemonService } from '../../services/pokemon.service';
+import { rxResource } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-types-page',
-  imports: [],
+  imports: [TypeCardComponent],
   templateUrl: './types-page.component.html',
 })
-export class TypesPageComponent {
+export class TypesPageComponent implements OnInit {
+  pokemonServices = inject(PokemonService);
+  
+  types = signal<string[] | null>(null);
+  
+  ngOnInit(): void {
+    this.types.set([]);
+  }
 
+  pokemonResource = rxResource({
+    request: () => ({ types: this.types()}),
+    loader: () => {
+      return this.pokemonServices.getTypes();
+    }
+  })
 }
