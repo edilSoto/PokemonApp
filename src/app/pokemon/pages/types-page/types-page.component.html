@@ -1,5 +1,1 @@
-<div>
-    @for (type of pokemonResource.value(); track type) {
-        <pokemon-type-card [type]="type"/>
-    }
-</div>
+<pokemon-types-grid [typesInput]="pokemonResource.value()!"/>
