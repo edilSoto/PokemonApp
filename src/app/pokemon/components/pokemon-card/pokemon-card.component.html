@@ -2,7 +2,7 @@
   <figure class="mt-6">
   <pokemon-image
     [shiny]="shiny()"
-    [sprite]="pokemon()?.sprite!"/>
+    [sprite]="pokemon().sprite!"/>
   </figure>
   <div class="card-body w-[400px]">
     <div class="flex justify-between mb-4">
@@ -28,17 +28,17 @@
         </div>
   
       <div class="flex gap-2 pt-2.5">
-        @for (type of pokemon()?.types; track type) {
+        @for (type of pokemon().types; track type) {
         <img class="w-14 h-6" src="assets/types/badges/{{type}}.webp" alt="type" />
         }
       </div>
     </div>
-    <p><span class="font-bold">Height:</span> {{pokemon()?.height! | convertDmtoM}} M</p>
-    <p><span class="font-bold">Weight:</span> {{pokemon()?.weight! | convertHgtoKg}} Kg</p>
+    <p><span class="font-bold">Height:</span> {{pokemon().height! | convertDmtoM}} M</p>
+    <p><span class="font-bold">Weight:</span> {{pokemon().weight! | convertHgtoKg}} Kg</p>
     <p class="text-center text-xl mt-2 font-semibold">Combat stats</p>
     <hr>
     <div class="flex flex-wrap gap-y-3">
-      @for (stat of pokemon()?.stats; track stat.name) {
+      @for (stat of pokemon().stats; track stat.name) {
       <p class="w-1/2"><span class="font-bold">{{stat.name}}:</span> {{stat.value}}</p>
       }
     </div>

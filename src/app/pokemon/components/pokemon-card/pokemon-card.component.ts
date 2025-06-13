@@ -11,7 +11,7 @@ import { PokemonImageComponent } from "./pokemon-image/pokemon-image.component";
   templateUrl: './pokemon-card.component.html',
 })
 export class PokemonCardComponent {
-  pokemon = input<Pokemon | null>();
+  pokemon = input.required<Pokemon>();
 
   shiny = signal<boolean>(false);
 

@@ -3,6 +3,7 @@ import { HomePageComponent } from '../shared/pages/home-page/home-page.component
 import { PokemonLayoutComponent } from './layouts/pokemon-layout/pokemon-layout.component';
 import { RandomPageComponent } from './pages/random-page/random-page.component';
 import { TypesPageComponent } from './pages/types-page/types-page.component';
+import { SearchPageComponent } from './pages/search-page/search-page.component';
 
 export const pokemonRoutes: Routes = [
     {
@@ -20,6 +21,10 @@ export const pokemonRoutes: Routes = [
             {
                 path: 'types',
                 component: TypesPageComponent
+            },            
+            {
+                path: 'search',
+                component: SearchPageComponent
             },
             {
                 path: '**',
