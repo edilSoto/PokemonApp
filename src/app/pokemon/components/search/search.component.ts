@@ -1,4 +1,4 @@
-import { Component, output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 @Component({
   selector: 'pokemon-search',
@@ -7,6 +7,8 @@ import { Component, output } from '@angular/core';
 })
 export class SearchComponent {
   query = output<string>();
+  isLoading = input<boolean>();
+  error = input();
 
   sendQuery(value: string){
     this.query.emit(value);
